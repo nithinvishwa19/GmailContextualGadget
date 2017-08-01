@@ -26,12 +26,12 @@
   <!-- Show this link in Google's universal navigation for all users -->
   <Extension id="navLink" type="link">
     <Name>HelloWorld</Name>
-    <Url>http://_example.com_/home.php?from=google&domain=${DOMAIN_NAME}</Url>
+    <Url>https://github.com/nithinvishwa19/GmailContextualGadget</Url>
   </Extension>
 
   <!-- Declare our OpenID realm so our app is white listed -->
   <Extension id="realm" type="openIdRealm">
-    <Url>http://_example.com_</Url>
+    <Url>https://github.com/nithinvishwa19/GmailContextualGadget</Url>
   </Extension>
 
 <!-- EXTRACTOR -->
@@ -41,7 +41,7 @@
   <Url>google.com:HelloWorld</Url>
   <!-- Uncomment this Param to apply a filter to the extractor's
   default output. The example regexp below makes the match case sensitive.
-  <Param name="hello" value="H[a-z]* W[a-z]*"/> -->
+  <Param name="hello" value="H[a-zA-Z]* W[a-zA-Z]*"/> -->
   <Triggers ref="HelloWorldGadget"/>
   <Scope ref="emailSubject"/>
   <Scope ref="emailBody"/>
@@ -52,7 +52,7 @@
 
 <Extension id="HelloWorldGadget" type="gadget">
   <Name>Hello World Gmail contextual gadget</Name>
-  <Url>_http://example.com/gadgets/hello_world_gadget.xml_</Url>
+  <Url>https://github.com/nithinvishwa19/GmailContextualGadget/blob/master/Gadget/Gadget.xml</Url>
   <Container name="mail"/>
   <!-- Uncomment this to enable Caja. -->
   <!-- <Param name="caja" value="enabled"/> -->
