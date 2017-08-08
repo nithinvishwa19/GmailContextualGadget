@@ -27,9 +27,38 @@
     </Require>
  </ModulePrefs>
  <Content type="html" view="card">
-    <![CDATA[
+   <form id="gadgetcontainer">
+   <table class="headerTable" cellspacing="0" cellpadding="0" border="0">
+     <tbody>
+       <tr>
+         <td class="nsd">
+           <strong>Dynamo</strong>
+         </td>
+         <td class="loggedStatus">Not logged in</td>
+       </tr>
+     </tbody>
+   </table>
+   <div id="gadgetContent" class="gadgetContent">
+     <input id="quickAdd" name="quickAdd" value="Quick Add" class="separatedButton button" type="button"/>
+       <input id="advAddUpld" name="advAddUpld" value="Advanced Add" class="separatedButton button" type="button"/>
+         <input id="loginbtn" name="loginbtn" value="Login" class="button" type="button"/>
+           <div id="loaderContainer" class="progress">
+             <table class="progress">
+               <tbody>
+                 <tr>
+                   <td id="loader" class="loader" style="display: none;">
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>
+   </div>
+   </form>
+    <!--<![CDATA[
       <script type="text/javascript" src="https://example.com/gadgets/sso.js"></script>
       <script type="text/javascript">
+        <!--
+        document.write("I have multi-line comments!");
         matches = google.contentmatch.getContentMatches();
         var matchList = document.createElement('UL');
         var listItem;
@@ -45,6 +74,6 @@
         document.body.appendChild(matchList);
         gadgets.window.adjustHeight(100);
       </script>
-    ]]>
+    ]]>-->
   </Content>
 </Module>
