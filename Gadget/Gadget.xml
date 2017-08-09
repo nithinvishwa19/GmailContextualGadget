@@ -20,46 +20,41 @@
     <!-- The next feature, google.contentmatch, is required for all
      Gmail contextual gadgets.
      <Param> - specify one or more comma-separated extractor IDs in
-     a param named "extractors". This line is overridden by the extractor ID
-     in the manifest, but is still expected to be present. -->
+     a param named "extractors". This line is oexpectedverridden by the extractor ID
+     in the manifest, but is still  to be present. -->
     <Require feature="google.contentmatch">
-      <Param name="extractors" value="google.com:HelloWorld"/>
+      <Param name="extractors"/>
     </Require>
  </ModulePrefs>
  <Content type="html" view="card">
-   <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-     <head>
-       <title>Hello World</title>
-     </head>
-     <body>
-         <table class="headerTable" cellspacing="0" cellpadding="0" border="0">
+   <body>
+     <form id="gadgetform">
+     <table class="headerTable" cellspacing="0" cellpadding="0" border="0">
+       <tbody>
+         <tr>
+           <td class="nsd">
+             <strong>Hello World</strong>
+           </td>
+           <td class="loggedStatus">Not logged in</td>
+         </tr>
+       </tbody>
+     </table>
+     <div id="gadgetContent" class="gadgetContent">
+       <input id="quickAdd" name="quickAdd" value="Quick Add" class="separatedButton button" type="button"/>
+       <input id="advAddUpld" name="advAddUpld" value="Advanced Add" class="separatedButton button" type="button"/>
+       <input id="loginbtn" name="loginbtn" value="Login" class="button" type="button"/>
+       <div id="loaderContainer" class="progress">
+         <table class="progress">
            <tbody>
              <tr>
-               <td class="nsd">
-                 <strong>Hello World</strong>
-               </td>
-               <td class="loggedStatus">Not logged in</td>
+               <td id="loader" class="loader" style="display: none;"/>
              </tr>
            </tbody>
          </table>
-         <div id="gadgetContent" class="gadgetContent">
-           <input id="quickAdd" name="quickAdd" value="Quick Add" class="separatedButton button" type="button" />
-           <input id="advAddUpld" name="advAddUpld" value="Advanced Add" class="separatedButton button" type="button" />
-           <input id="loginbtn" name="loginbtn" value="Login" class="button" type="button" />
-           <div id="loaderContainer" class="progress">
-             <table class="progress">
-               <tbody>
-                 <tr>
-                   <td id="loader" class="loader" style="display: none;"></td>
-                 </tr>
-               </tbody>
-             </table>
-           </div>
-         </div>
-     </body>
-   </html>
-    <!--<![CDATA[
-      <script type="text/javascript" src="https://example.com/gadgets/sso.js"></script>
+       </div>
+     </div>
+     </form>
+     <![CDATA[
       <script type="text/javascript">
         document.write("I have multi-line comments!");
         matches = google.contentmatch.getContentMatches();
@@ -77,6 +72,7 @@
         document.body.appendChild(matchList);
         gadgets.window.adjustHeight(100);
       </script>
-    ]]>-->
+    ]]>
+   </body>   
   </Content>
 </Module>
