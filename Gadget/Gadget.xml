@@ -20,7 +20,7 @@
     <!-- The next feature, google.contentmatch, is required for all
      Gmail contextual gadgets.
      <Param> - specify one or more comma-separated extractor IDs in
-     a param named "extractors". This line is oexpectedverridden by the extractor ID
+     a param named "extractors". This line is expected to be verridden by the extractor ID
      in the manifest, but is still  to be present. -->
     <Require feature="google.contentmatch">
       <Param name="extractors"/>
@@ -28,50 +28,59 @@
  </ModulePrefs>
  <Content type="html" view="card">
    <body>
-     <form id="gadgetform">
-     <table class="headerTable" cellspacing="0" cellpadding="0" border="0">
-       <tbody>
-         <tr>
-           <td class="nsd">
-             <strong>Hello World</strong>
-           </td>
-           <td class="loggedStatus">Not logged in</td>
-         </tr>
-       </tbody>
-     </table>
-     <div id="gadgetContent" class="gadgetContent">
-       <input id="quickAdd" name="quickAdd" value="Quick Add" class="separatedButton button" type="button"/>
-       <input id="advAddUpld" name="advAddUpld" value="Advanced Add" class="separatedButton button" type="button"/>
-       <input id="loginbtn" name="loginbtn" value="Login" class="button" type="button"/>
-       <div id="loaderContainer" class="progress">
-         <table class="progress">
-           <tbody>
-             <tr>
-               <td id="loader" class="loader" style="display: none;"/>
-             </tr>
-           </tbody>
-         </table>
-       </div>
-     </div>
-     </form>
-     <![CDATA[
+      <![CDATA[
       <script type="text/javascript">
-        document.write("I have multi-line comments!");
-        matches = google.contentmatch.getContentMatches();
-        var matchList = document.createElement('UL');
-        var listItem;
-        var extractedText;
-        for (var match in matches) {
-          for (var key in matches[match]) {
-            listItem = document.createElement('LI');
-            extractedText = document.createTextNode(key + ": " + matches[match][key]);
-            listItem.appendChild(extractedText);
-            matchList.appendChild(listItem);
-          }
+        var f = document.createElement("form");
+        f.setAttribute('method', "post");
+        f.setAttribute('action', "javascript:;");
+        f.setAttribute('enctype', 'text/plain');
+
+        //create input element
+        var i = document.createElement("input");
+        i.type = "text";
+        i.name = "file_name";
+        i.id = "file_name1";
+
+        //create a checkbox
+        var c = document.createElement("input");
+        c.type = "checkbox";
+        c.id = "checkbox1";
+        c.name = "check1";
+
+        //create a button
+        var s = document.createElement("input");
+        s.type = "submit";
+        s.value = "Submit";
+
+        // add all elements to the form
+        f.appendChild(i);
+        f.appendChild(c);
+        f.appendChild(s);
+
+
+        document.body.appendChild(f);      
+        f.onsubmit = function () { return loadDocument(i.value) };
+        document.getElementsByTagName('body')[0].appendChild(f);
+        
+        // add frame to the Body
+        var iframe = document.createElement('iframe');
+        iframe.id = "testframe";
+        iframe.width = "400px";
+        iframe.height = "600px";
+        document.body.appendChild(iframe);
+        
+        //Gadget Height Adjust
+        gadgets.window.adjustHeight(600);
+        
+    </script>
+    <script type="text/javascript">
+        function loadDocument(inputValue) {            
+            var frame = document.getElementById("testframe");
+            var source = document.createAttribute("src");
+            source.value = "https://storage.googleapis.com/gadget.talentrec.net/"+inputValue;
+            frame.attributes.setNamedItem(source);
         }
-        document.body.appendChild(matchList);
-        gadgets.window.adjustHeight(100);
-      </script>
+    </script>
     ]]>
    </body>   
   </Content>
